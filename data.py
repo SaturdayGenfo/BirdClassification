@@ -10,7 +10,7 @@ import torchvision.transforms as transforms
 data_transforms = transforms.Compose([
     transforms.Resize((64, 64)),
     transforms.RandomHorizontalFlip(),
-    transforms.RandomAffine(10, shear=2),
+    transforms.RandomAffine(10, scale = (0.5, 2), shear=2),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
