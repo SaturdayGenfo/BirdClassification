@@ -92,7 +92,7 @@ def validation():
         validation_loss, correct, len(val_loader.dataset),
         100. * correct / len(val_loader.dataset)))
 
-scheduler = MultiStepLR(optimizer, milestones=[10, 30, 50], gamma=0.1)
+scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[10, 30, 50], gamma=0.1)
 for epoch in range(1, args.epochs + 1):
     scheduler.step()
     train(epoch)
