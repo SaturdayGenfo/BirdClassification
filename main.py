@@ -94,7 +94,7 @@ def validation():
 
 scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[10, 30, 70], gamma=0.5)
 for epoch in range(1, args.epochs + 1):
-    scheduler.step()
+    #scheduler.step()
     train(epoch)
     validation()
     model_file = args.experiment + '/model_' + str(epoch) + '.pth'
