@@ -12,8 +12,8 @@ class Net(nn.Module):
         self.PreTrainedResNet = models.resnet18(pretrained=True)
         for param in self.PreTrainedResNet.parameters():
             param.requires_grad = False
-        sel.num_ftrs = self.PreTrainedResNet.fc.in_features
-        self.PreTrainedResNet.fc = nn.Linear(num_ftrs, 50)
+        self.num_ftrs = self.PreTrainedResNet.fc.in_features
+        self.PreTrainedResNet.fc = nn.Linear(self.num_ftrs, 50)
 
     def forward(self, x):
         return self.PreTrainedResNet.forward(x)
