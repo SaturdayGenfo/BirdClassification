@@ -12,6 +12,7 @@ class Net(nn.Module):
         self.PreTrainedResNet = models.resnet18(pretrained=True)
         for param in self.PreTrainedResNet.parameters():
             param.requires_grad = False
+        self.PreTrainedResNet.avgpool = nn.AvgPool2d(2, stride=1)
         self.numfeatures = self.PreTrainedResNet.fc.in_features
         self.PreTrainedResNet.fc = nn.Linear(self.numfeatures, 50)
 
