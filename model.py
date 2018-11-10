@@ -18,7 +18,7 @@ class Net(nn.Module):
                 for name2, params in child.named_parameters():
                     params.requires_grad = False
         self.num_features = self.PreTrainedVGG.classifier[6].in_features
-        self.features = list(self.PreTrainedVGG.classifier.children())[:-1] # Remove last layer
+        self.features = [nn.Linear(64, 4096)] + list(self.PreTrainedVGG.classifier.children())[1:-1]
         self.features.extend([nn.Linear(self.num_features, nclasses)]) # Add our layer with 4 outputs
         self.PreTrainedVGG.classifier = nn.Sequential(*self.features) 
 
