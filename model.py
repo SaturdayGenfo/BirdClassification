@@ -14,7 +14,7 @@ class Net(nn.Module):
         ct = 0
         for name, child in self.PreTrainedVGG.named_children():
             ct += 1
-            if ct < 15:
+            if ct < 2:
                 for name2, params in child.named_parameters():
                     params.requires_grad = False
         self.classifier = nn.Sequential(
