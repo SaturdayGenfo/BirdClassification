@@ -18,13 +18,13 @@ class Net(nn.Module):
                 for name2, params in child.named_parameters():
                     params.requires_grad = False
         self.classifier = nn.Sequential(
-            nn.Linear(64, 2048),
+            nn.Linear(2048, 64),
             nn.ReLU(True),
             nn.Dropout(),
-            nn.Linear(2048, 2048),
+            nn.Linear(64, 64),
             nn.ReLU(True),
             nn.Dropout(),
-            nn.Linear(2048, nclasses),
+            nn.Linear(64, nclasses),
         )
         self.PreTrainedVGG.classifier = self.classifier
 
