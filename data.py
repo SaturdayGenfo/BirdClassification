@@ -10,7 +10,7 @@ import torchvision.transforms as transforms
 # the training set
 data_transforms = transforms.Compose([
     transforms.Resize((64, 64)),
-    transforms.ColorJitter(hue=.05, saturation=.05),
+    transforms.RandomVerticalFlip(),
     transforms.RandomHorizontalFlip(),
     transforms.RandomRotation(20, resample=PIL.Image.BILINEAR),
     transforms.ToTensor(),
