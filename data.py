@@ -10,9 +10,10 @@ import torchvision.transforms as transforms
 # the training set
 data_transforms = transforms.Compose([
     transforms.Resize((64, 64)),
+    torchvision.transforms.ColorJitter(hue=.02, saturation=.08),
     transforms.RandomVerticalFlip(),
     transforms.RandomHorizontalFlip(),
-    transforms.RandomRotation(20, resample=PIL.Image.BILINEAR),
+    transforms.RandomRotation(30, resample=PIL.Image.BILINEAR),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
