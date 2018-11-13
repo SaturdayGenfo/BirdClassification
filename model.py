@@ -22,7 +22,7 @@ class Net(nn.Module):
         self.PreTrainedResNet.avgpool = nn.AvgPool2d(2, stride=1)
         self.numfeatures = self.PreTrainedResNet.fc.in_features
         self.PreTrainedResNet.fc = nn.Sequential(
-            nn.Linear(4068, 4096),
+            nn.Linear(512, 4096),
             nn.ReLU(True),
             nn.Dropout(0.2),
             nn.Linear(4096, 4096),
