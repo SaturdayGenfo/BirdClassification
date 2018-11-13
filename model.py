@@ -9,7 +9,7 @@ nclasses = 20
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.PreTrainedResNet = models.resnet18(pretrained=True)
+        self.PreTrainedResNet = models.resnet101(pretrained=True)
         
         
         ct = 0
