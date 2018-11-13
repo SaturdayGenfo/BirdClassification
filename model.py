@@ -21,7 +21,7 @@ class Net(nn.Module):
         
         self.PreTrainedResNet.avgpool = nn.AvgPool2d(2, stride=1)
         self.numfeatures = self.PreTrainedResNet.fc.in_features
-        self.PreTrainedResNet.fc = nn.Linear(self.numfeatures, 20)
+        self.PreTrainedResNet.fc = nn.Linear(4608, 20)
 
     def forward(self, x):
         return self.PreTrainedResNet.forward(x)
