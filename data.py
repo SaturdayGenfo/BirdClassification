@@ -11,7 +11,7 @@ import torchvision.transforms as transforms
 data_transforms = transforms.Compose([
     transforms.Resize((512, 512)),
     transforms.ColorJitter(hue=.01, saturation=.08),
-    transforms.RandomVerticalFlip(),
+    #transforms.RandomVerticalFlip(),
     transforms.RandomHorizontalFlip(),
     transforms.RandomRotation(30, resample=PIL.Image.BILINEAR),
     transforms.ToTensor(),
