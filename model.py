@@ -9,7 +9,7 @@ nclasses = 20
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.PreTrainedResNet = models.resnet18(pretrained=True)
+        self.PreTrainedResNet = models.alexnet(pretrained=True)
         
         '''
         ct = 0
@@ -20,9 +20,15 @@ class Net(nn.Module):
                     params.requires_grad = False
         '''
         
-        self.PreTrainedResNet.avgpool = nn.AvgPool2d(2, stride=1)
-        self.numfeatures = self.PreTrainedResNet.fc.in_features
-        self.PreTrainedResNet.fc = nn.Linear(self.numfeatures, nclasses)
+        self.PreTrainedResNet.classifier = nn.Sequential(
+            nn.Dropout(),
+            nn.Linear(256 * 6 * 6, 4096),
+            nn.ReLU(inplace=True),
+            nn.Dropout(),
+            nn.Linear(4096, 4096),
+            nn.ReLU(inplace=True),
+            nn.Linear(4096, nclasses),
+        )
 
     def forward(self, x):
         return self.PreTrainedResNet.forward(x)
