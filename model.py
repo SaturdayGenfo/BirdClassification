@@ -15,7 +15,7 @@ class Net(nn.Module):
         ct = 0
         for name, child in self.PreTrainedResNet.named_children():
             ct += 1
-            if ct < 3:
+            if ct < 50:
                 for name2, params in child.named_parameters():
                     params.requires_grad = False
         
