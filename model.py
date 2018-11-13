@@ -9,7 +9,8 @@ nclasses = 20
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.PreTrainedResNet = models.alexnet(pretrained=True, nclasses)
+        self.model = models.inception_v3(pretrained=True)
+        self.model.fc = nn.Linear(2048, nclasses)
         
         '''
         ct = 0
@@ -21,4 +22,4 @@ class Net(nn.Module):
         '''
 
     def forward(self, x):
-        return self.PreTrainedResNet.forward(x)
+        return self.model.forward(x)
