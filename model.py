@@ -12,7 +12,7 @@ class Net(nn.Module):
         self.model = models.resnet50(pretrained=True)
         self.model.fc = nn.Linear(self.model.fc.in_features, nclasses)
         ct = 0
-        for name, child in self.PreTrainedResNet.named_children():
+        for name, child in self.model.named_children():
             ct += 1
             if ct < 3:
                 for name2, params in child.named_parameters():
