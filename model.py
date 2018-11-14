@@ -9,7 +9,7 @@ nclasses = 20
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.model = models.resnet50(pretrained=True)
+        self.model = models.resnet18(pretrained=True)
         self.model.fc = nn.Linear(self.model.fc.in_features, nclasses)
         ct = 0
         for name, child in self.model.named_children():
