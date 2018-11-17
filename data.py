@@ -15,7 +15,7 @@ data_transforms = {
     transforms.ColorJitter(hue=.00, saturation=.03),
     transforms.RandomVerticalFlip(),
     transforms.RandomHorizontalFlip(),
-    transforms.RandomRotation(4, resample=PIL.Image.BILINEAR),
+    #transforms.RandomRotation(4, resample=PIL.Image.BILINEAR),
     transforms.ToTensor(),
     #transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])]),
     
