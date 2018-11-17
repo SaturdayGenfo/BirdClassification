@@ -12,10 +12,10 @@ data_transforms = {
     
     'train' : transforms.Compose([
     transforms.Resize((224, 224)),
-    transforms.ColorJitter(hue=.00, saturation=.03),
+    transforms.ColorJitter(hue=.02, saturation=.06),
     transforms.RandomVerticalFlip(),
     transforms.RandomHorizontalFlip(),
-    transforms.RandomRotation(3, resample=PIL.Image.BILINEAR),
+    transforms.RandomRotation(10, resample=PIL.Image.BILINEAR),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])]),
     
