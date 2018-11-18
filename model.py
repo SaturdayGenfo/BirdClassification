@@ -19,7 +19,6 @@ class Net(nn.Module):
             nn.Dropout(),
             nn.Linear(4096, nclasses),
         )
-        self.model.fc = nn.Linear(self.model.fc.in_features, nclasses)
 
     def forward(self, x):
         return self.model.forward(x)
