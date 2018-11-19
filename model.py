@@ -9,7 +9,7 @@ nclasses = 20
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.model = models.inception_v3(pretrained=True)
+        self.model = models.inception_v3(pretrained=True, aux_logits=False)
         self.model.fc = nn.Linear(self.model.fc.in_features, nclasses)
         '''
         ct = 0
@@ -22,5 +22,4 @@ class Net(nn.Module):
         
 
     def forward(self, x):
-        out, aux = self.model.forward(x)
-        return out
+        return self.model.forward(x)
