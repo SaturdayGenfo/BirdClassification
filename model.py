@@ -10,7 +10,7 @@ class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
         self.model = models.inception_v3(pretrained=True)
-        self.model.AuxLogits.fc = nn.Linear(model_ft.AuxLogits.fc.in_features, nclasses)
+        self.model.AuxLogits.fc = nn.Linear(self.model.AuxLogits.fc.in_features, nclasses)
         self.model.fc = nn.Linear(self.model.fc.in_features, nclasses)
         '''
         ct = 0
