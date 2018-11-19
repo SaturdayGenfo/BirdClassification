@@ -10,7 +10,7 @@ class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
         #self.model = models.squeezenet(pretrained=True)
-        self.model = models.squeezenet1_0(pretrained=use_pretrained)
+        self.model = models.squeezenet1_0(pretrained=True)
         self.model.classifier[1] = nn.Conv2d(512, nclasses, kernel_size=(1,1), stride=(1,1))
         '''
         ct = 0
