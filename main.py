@@ -63,11 +63,12 @@ def train(epoch):
             data, target = data.cuda(), target.cuda()
         optimizer.zero_grad()
         #output = model(data)
+        criterion = torch.nn.CrossEntropyLoss(reduction='elementwise_mean')
         outputs, aux_outputs = model(data)
         loss1 = criterion(outputs, target)
         loss2 = criterion(aux_outputs, target)
         loss = loss1 + 0.4*loss2
-        #criterion = torch.nn.CrossEntropyLoss(reduction='elementwise_mean')
+        
         #loss = criterion(output, target)
         loss.backward()
         optimizer.step()
