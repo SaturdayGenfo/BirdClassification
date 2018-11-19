@@ -9,7 +9,8 @@ nclasses = 20
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.model = models.inception_v3(pretrained=False, aux_logits=False)
+        self.model = models.inception_v3(pretrained=False)
+        self.model.aux_logit=False
         self.model.fc = nn.Linear(self.model.fc.in_features, nclasses)
         '''
         ct = 0
