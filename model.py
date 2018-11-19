@@ -22,4 +22,5 @@ class Net(nn.Module):
         
 
     def forward(self, x):
-        return self.model.forward(x)
+        out, aux = self.model.forward(x)
+        return out
