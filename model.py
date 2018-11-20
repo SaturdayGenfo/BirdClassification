@@ -10,7 +10,7 @@ class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
         #self.model = models.squeezenet(pretrained=True)
-        self.model = models.resnet152(pretrained=True)
+        self.model = models.resnet101(pretrained=True)
         
         self.model.fc = nn.Linear(self.model.fc.in_features, nclasses)
         '''
