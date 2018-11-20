@@ -10,10 +10,9 @@ class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
         #self.model = models.squeezenet(pretrained=True)
-        self.model = models.squeezenet1_1(pretrained=True)
+        self.model = models.resnet101(pretrained=True)
         
-        self.model.classifier[1] = nn.Conv2d(512, nclasses, kernel_size=(1,1), stride=(1,1))
-        self.model.num_classes = nclasses
+        self.model.fc = nn.Linear(self.model.fc.in_features, nclasses)
         '''
         ct = 0
         for name, child in self.model.named_children():
